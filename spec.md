@@ -2,10 +2,10 @@
 
 | Thành viên | Mã học viên | Việc đã làm |
 |---|---|---|
-| [Nguyễn Hoàng Cương] | 2A202603568 | [§1–§2 kịch bản; §7 Demo và checklist nộp] |
-| [Nguyễn Mạnh Tường] | 2A202603646 | [§4 Mức tự chủ: bảng 5 tool, lập luận cost-of-error, tool khó xếp nhất, thử trên 3 kịch bản] |
-| [Vũ Lê Hoàng] | 2A202603542 | [§3 Khi AI sai: câu AI nói nguyên văn, loại lỗi, nguyên tắc HAX/PAIR; §6 Tốt là gì: 3 tiêu chí Pass/Fail và chấm thử] |
-| [Nguyễn Thị Dung] | 2A202603508 | [§5 Prototype: file HTML và ảnh đánh số ①–⑨] |
+| Nguyễn Hoàng Cương | 2A202603568 | §1–§2 kịch bản; §7 Demo và checklist nộp |
+| Nguyễn Mạnh Tường | 2A202603646 | §4 Mức tự chủ: bảng 5 tool, lập luận cost-of-error, tool khó xếp nhất, thử trên 3 kịch bản |
+| Vũ Lê Hoàng | 2A202603542 | §3 Khi AI sai: câu AI nói nguyên văn, loại lỗi, nguyên tắc HAX/PAIR; §6 Tốt là gì: 3 tiêu chí Pass/Fail và chấm thử |
+| Nguyễn Thị Dung | 2A202603508 | §5 Prototype: file HTML và ảnh đánh số ①–⑨ |
 
 > Dữ liệu trong bài là dựng. Khoá học không liên kết với MoMo. Không dùng dữ liệu thật, không chat với sản phẩm thật.
 
@@ -76,9 +76,9 @@ Làm cho 2 kịch bản đắt nhất. Câu AI nói dưới đây khớp từng 
   - Loại "chặn im lặng không giải thích": khách thật sẽ hoang mang; track nói rõ người bị lừa cần "có ai bảo mẹ dừng lại".
 - **Loại lỗi: ngữ cảnh.** Hệ thống chạy đúng quy trình (xác thực khuôn mặt đúng) nhưng sai với tình huống người dùng đang bị thao túng. Vì vậy cách nói **không xin lỗi, không đổ lỗi cho khách**; nói thẳng lý do dừng và chỉ đường. Cách sửa là sửa **thiết kế** (xác thực đúng không mở quyền nhả), không chỉ sửa câu chữ.
 - **Nguyên tắc HAX/PAIR**
-  - **G10** (thu hẹp phạm vi khi nghi ngờ) → ở prototype, AI không gọi `nha_giao_dich` mà chuyển người; chỗ ⑥ trên màn khách.
-  - **G11** (giải thích vì sao) → dòng "Mình dựa vào" chỗ ④, liệt kê lời khách nói.
-  - **PAIR Errors + Graceful failure** → thẻ trạng thái chỗ ⑤ lấy từ kết quả tool; tool lỗi thì không hiện "đã chuyển".
+  - **G10** (thu hẹp phạm vi khi nghi ngờ) -> ở prototype, AI không gọi `nha_giao_dich` mà chuyển người; chỗ ⑥ trên màn khách.
+  - **G11** (giải thích vì sao) -> dòng "Mình dựa vào" chỗ ④, liệt kê lời khách nói.
+  - **PAIR Errors + Graceful failure** -> thẻ trạng thái chỗ ⑤ lấy từ kết quả tool; tool lỗi thì không hiện "đã chuyển".
 - **Lỗi sửa câu chữ không cứu được:** AI nói "đã báo tư vấn viên" mà việc chuyển chưa thành công. Câu chữ nào cũng không giúp nếu câu đó sai sự thật. Thiết kế cứu: thẻ trạng thái ⑤ chỉ hiện trạng thái do tool trả về, và AI chỉ được nói "mình đã chuyển ca" sau khi tool trả thành công (prototype mô phỏng nhánh thành công); AI không có quyền tự khẳng định "đã chuyển/đã khoá" khi chưa có kết quả tool. Tương tự, AI không được tự quyết nhả dù câu chữ hoàn hảo: người bị lừa vẫn xác thực đúng, nên chỉ thiết kế (nhả do người duyệt) mới cứu được.
 
 ### Kịch bản #5 — người thật đang gấp ở quầy viện phí
@@ -97,8 +97,8 @@ Làm cho 2 kịch bản đắt nhất. Câu AI nói dưới đây khớp từng 
   - Câu hỏi "có ai hướng dẫn qua điện thoại" **chỉ dùng để xếp ưu tiên và nhắc cảnh giác, không mở quyền nhả**: người bị lừa có thể trả lời "Không", nên câu trả lời không bao giờ thay cho quyết định của người thật.
 - **Loại lỗi: hệ thống** nếu AI vòng vo (AI tự làm chậm khách); **ngữ cảnh** nếu AI nhả theo lời (đúng quy trình, sai tình huống). Với lỗi hệ thống, AI xin lỗi ngắn và đưa ngay đường đi; với lỗi ngữ cảnh, sửa thiết kế (nhả luôn do người duyệt).
 - **Nguyên tắc HAX/PAIR**
-  - **G10** → một câu hỏi thay ba câu vòng vo, trong bong bóng AI ③.
-  - **G8** (gạt bỏ dễ dàng) → nút "Có/Không" và "Xác thực ngay" là lối đi một chạm; khách thật không bị chặn.
+  - **G10** -> một câu hỏi thay ba câu vòng vo, trong bong bóng AI ③.
+  - **G8** (gạt bỏ dễ dàng) -> nút "Có/Không" và "Xác thực ngay" là lối đi một chạm; khách thật không bị chặn.
 - **Lỗi sửa câu chữ không cứu được:** chờ tư vấn viên. Câu hay đến mấy cũng không rút ngắn thời gian chờ người. Thiết kế cứu: hàng chờ ưu tiên có thời hạn, xác thực song song, và gợi ý thanh toán cách khác ngay trong lúc chờ.
 
 ---
@@ -161,7 +161,7 @@ Ba mức: **tự làm** · **cần người duyệt** · **cấm**. Lý do viế
 - **File:** `prototype/index.html` (một file HTML offline, không backend, không đăng nhập).
 - **Công cụ:** viết bằng coding agent (Claude Code), chỉnh tay.
 - **Mock:** toàn bộ. Câu AI viết sẵn từ thiết kế chặng 3–4. **Không có lời gọi AI thật** (không có điểm bonus phần đó). Không có API key trong file.
-- **Cách bấm:** chọn kịch bản ở cột trái → xem điện thoại của khách ở giữa (công tắc "AI không có thiết kế" / "Thiết kế của nhóm") → xem tab "Màn hình tư vấn viên" và "Mức tự chủ" bên phải. Ca khó: **#4** (người bị lừa) và **#5** (người thật gấp).
+- **Cách bấm:** chọn kịch bản ở cột trái -> xem điện thoại của khách ở giữa (công tắc "AI không có thiết kế" / "Thiết kế của nhóm") -> xem tab "Màn hình tư vấn viên" và "Mức tự chủ" bên phải. Ca khó: **#4** (người bị lừa) và **#5** (người thật gấp).
 
 **Ảnh đánh số** (chụp từ `prototype/index.html`, số đỏ ①–⑨ trỏ vào đúng chỗ theo bảng bên dưới; ảnh chụp với khung điện thoại kéo cao hơn để thấy hết cuộc chat):
 
@@ -173,7 +173,7 @@ Ba mức: **tự làm** · **cần người duyệt** · **cấm**. Lý do viế
 
   ![Ca #5 đánh số](prototype/case5-annotated.png)
 
-**Bảng đối chiếu số → chỗ trên màn hình**
+**Bảng đối chiếu số -> chỗ trên màn hình**
 
 | Số | Chỗ trên màn hình | Thể hiện gì | Nguyên tắc | Mức tự chủ |
 |---|---|---|---|---|
@@ -232,10 +232,10 @@ Ba tiêu chí Pass/Fail, một người ngoài nhóm đọc chấm ra cùng kế
 
 ## §7. Demo
 
-- **Cấu trúc:** lát cắt (30") → bấm ca #4 rồi #5 → một mức tự chủ và cái giá (`nha_giao_dich`) → ca lạ.
+- **Cấu trúc:** lát cắt (30") -> bấm ca #4 rồi #5 -> một mức tự chủ và cái giá (`nha_giao_dich`) -> ca lạ.
 - **Phân công nói:** [Nguyễn Hoàng Cương: lát cắt, kịch bản] · [Vũ Lê Hoàng: khi AI sai, tiêu chí] · [Nguyễn Mạnh Tường: mức tự chủ] · [Nguyễn Thị Dung: bấm prototype, ca lạ].
 - **Ca lạ nhận được ở demo:** [điền sau demo: ca là gì, prototype đã làm gì, nhóm có đổi ý gì sau ca đó không].
-- **Chuẩn bị sẵn cho ca lạ:** xác định ca lạ thuộc lớp nào (①–④) → tool nào AI có thể gọi nhầm → mức tự chủ trong §4 cho tool đó → AI nói gì. Việc không đảo được luôn đi qua người duyệt.
+- **Chuẩn bị sẵn cho ca lạ:** xác định ca lạ thuộc lớp nào (①–④) -> tool nào AI có thể gọi nhầm -> mức tự chủ trong §4 cho tool đó -> AI nói gì. Việc không đảo được luôn đi qua người duyệt.
 
 ---
 
