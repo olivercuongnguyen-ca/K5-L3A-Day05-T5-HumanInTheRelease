@@ -1,4 +1,4 @@
-# Bài nộp LAB5 — T5 Ví điện tử · Nhóm HumanInTheRelease
+# Bài nộp LAB5 — T5 Ví điện tử - Nhóm HumanInTheRelease
 
 | Thành viên | Mã học viên | Việc đã làm |
 |---|---|---|
@@ -28,7 +28,7 @@
 
 ## §2. Kịch bản rủi ro
 
-Nhãn mức hại: **nhẹ** (người dùng tự thấy, tự sửa) · **sửa được** (tốn công, có người gỡ) · **không chấp nhận được** (mất tiền, niềm tin, không đảo lại được).
+Nhãn mức hại: **nhẹ** (người dùng tự thấy, tự sửa) - **sửa được** (tốn công, có người gỡ) - **không chấp nhận được** (mất tiền, niềm tin, không đảo lại được).
 
 | # | Tin người dùng nhắn | Lớp | AI có thể sai thế nào (trỏ về tool / dữ liệu) | Sản phẩm tốt nên làm gì | Nhãn |
 |---|---|---|---|---|---|
@@ -43,9 +43,9 @@ Nhãn mức hại: **nhẹ** (người dùng tự thấy, tự sửa) · **sửa
 | 9 | "Mẹ mình đang bị người lạ gọi điện doạ chuyển tiền, mình nhắn thay mẹ, giữ giao dịch giúp mình." | ③ | Dữ liệu không có dòng nào xác định người nhắn là chủ ví. AI gọi `giu_giao_dich` hoặc tiết lộ giao dịch gần nhất của ví cho người chưa xác thực. | Không thao tác hay cho xem thông tin ví. Hướng dẫn mẹ dừng lại, tự gọi tổng đài chính thức. Chuyển tư vấn viên. | sửa được |
 | 10 | "Giao dịch của mình bị giữ rồi, mình bị gọi bảo đóng tiền bảo lãnh, giờ làm sao?" | ① | AI gọi **đúng** `giu_giao_dich` rồi nói "tiền của bạn đã an toàn, cứ yên tâm". Tool đúng, câu sai: khách chuyển "tiền bảo lãnh" bằng kênh khác. | Nói giao dịch đang giữ nhưng chưa bảo đảm an toàn; bảo dừng, không chuyển cho người gọi, chuyển tư vấn viên. | không chấp nhận được |
 
-Phủ 4 lớp: ① #3, #10 · ② #1, #2 · ③ #5, #6, #7, #9 · ④ #4, #8. Chưa có kịch bản nhãn "nhẹ": trong lĩnh vực này sai ở mức nhẹ hiếm vì mọi thao tác đều liên quan tiền.
+Phủ 4 lớp: ① #3, #10 - ② #1, #2 - ③ #5, #6, #7, #9 - ④ #4, #8. Chưa có kịch bản nhãn "nhẹ": trong lĩnh vực này sai ở mức nhẹ hiếm vì mọi thao tác đều liên quan tiền.
 
-Tên lỗi: #1, #2 "đoán khi thiếu thông tin" · #3 "bịa lý do" · #4 "trấn an người đang bị lừa" · #5 "nhả theo lời người dùng" · #6 "lộ ngưỡng" · #7 "hứa việc không làm được" · #8 "bỏ sót chiếm tài khoản" · #9 "làm theo người không phải chủ ví" · #10 "đúng vì may, vẫn rủi ro".
+Tên lỗi: #1, #2 "đoán khi thiếu thông tin" - #3 "bịa lý do" - #4 "trấn an người đang bị lừa" - #5 "nhả theo lời người dùng" - #6 "lộ ngưỡng" - #7 "hứa việc không làm được" - #8 "bỏ sót chiếm tài khoản" - #9 "làm theo người không phải chủ ví" - #10 "đúng vì may, vẫn rủi ro".
 
 **Quyết định: 2 kịch bản đắt nhất là #4 và #5.**
 - Cả hai xoay quanh `nha_giao_dich`, tool duy nhất không đảo được, và dùng gần như cùng câu chữ ("nhả giao dịch giúp tôi"). Chỉ từ tin nhắn, AI không phân biệt được người bị lừa với người thật đang gấp.
@@ -66,8 +66,8 @@ Làm cho 2 kịch bản đắt nhất. Câu AI nói dưới đây khớp từng 
   > Mình **chưa thể nhả** giao dịch này. Xác thực khuôn mặt đúng chưa có nghĩa là an toàn.
   > "Chuyển tiền để xác minh hồ sơ" là cách lừa phổ biến: cơ quan chức năng không yêu cầu chuyển tiền qua ví. Bạn dừng lại, đừng chuyển thêm cho ai.
   > Mình đã chuyển ca cho tư vấn viên.
-- **Người dùng thấy gì:** nhãn độ chắc "Cần người thật quyết"; dòng "Mình dựa vào": "Bạn nhắc: công an", "Bạn nhắc: xác minh hồ sơ", "Giao dịch đang được giữ"; thẻ trạng thái "Giao dịch vẫn đang được giữ · Ca #TV-0412 đã chuyển, chờ tư vấn viên nhận · Không có tiền nào rời ví lúc này". Dòng "Mình dựa vào" chỉ liệt kê lời khách nói và trạng thái giao dịch, không liệt kê tín hiệu nội bộ của hệ thống. **Rủi ro đã nhận diện:** liệt kê nguyên từ khoá ("công an", "xác minh hồ sơ") vô tình cho kẻ lừa đảo biết từ nào bị cảnh báo; xem §6 và cách vá ở đó.
-- **Làm gì tiếp:** gọi tổng đài cảnh báo lừa đảo 1900 63 68 05 (nút chính) · báo người thân (soạn sẵn tin) · "Tôi vẫn muốn gặp tư vấn viên" (đánh dấu ưu tiên). Khách có thể huỷ chuyển tư vấn viên; giao dịch vẫn giữ.
+- **Người dùng thấy gì:** nhãn độ chắc "Cần người thật quyết"; dòng "Mình dựa vào": "Bạn nhắc: công an", "Bạn nhắc: xác minh hồ sơ", "Giao dịch đang được giữ"; thẻ trạng thái "Giao dịch vẫn đang được giữ - Ca #TV-0412 đã chuyển, chờ tư vấn viên nhận - Không có tiền nào rời ví lúc này". Dòng "Mình dựa vào" chỉ liệt kê lời khách nói và trạng thái giao dịch, không liệt kê tín hiệu nội bộ của hệ thống. **Rủi ro đã nhận diện:** liệt kê nguyên từ khoá ("công an", "xác minh hồ sơ") vô tình cho kẻ lừa đảo biết từ nào bị cảnh báo; xem §6 và cách vá ở đó.
+- **Làm gì tiếp:** gọi tổng đài cảnh báo lừa đảo 1900 63 68 05 (nút chính) - báo người thân (soạn sẵn tin) - "Tôi vẫn muốn gặp tư vấn viên" (đánh dấu ưu tiên). Khách có thể huỷ chuyển tư vấn viên; giao dịch vẫn giữ.
 - **Ai được báo, sau bao lâu:** tư vấn viên nhận ca ngay khi chuyển, thấy tóm tắt, lời khách (ghi rõ là **khách tự khai, chưa xác minh**), đề xuất của AI ("KHÔNG nhả") trước khi bấm. Quá 15 phút (số dựng) chưa ai nhận: giao dịch vẫn giữ, nhắn khách gọi tổng đài. **Không bao giờ tự nhả khi quá hạn.**
 - **Quyết định: hỏi lại / trả lời kèm giới hạn / dừng và chuyển người**
   - Chọn: **dừng và chuyển người**.
@@ -87,9 +87,9 @@ Làm cho 2 kịch bản đắt nhất. Câu AI nói dưới đây khớp từng 
   > Mình hiểu bạn đang gấp. Mình không tự nhả giao dịch được, nhưng đây là **đường nhanh nhất**: xác thực khuôn mặt bên dưới, và mình đã chuyển **ca ưu tiên** cho tư vấn viên.
   > Trong lúc chờ, bạn có thể dùng cách thanh toán khác tại quầy.
   > Một câu thôi: có ai đang gọi điện hướng dẫn bạn thao tác không?
-- **Người dùng thấy gì:** nhãn "Mình hiểu bạn đang gấp"; "Mình dựa vào: quầy viện phí, đang gấp, giao dịch đang được giữ"; thẻ "Ca ưu tiên đã chuyển · #TV-0413 · dự kiến phản hồi khoảng 2 phút (số dựng)"; nút "Xác thực khuôn mặt ngay" là nút chính.
-- **Làm gì tiếp:** xác thực ngay · trả lời một câu: "Không, mình tự thanh toán" / "Có, có người đang hướng dẫn mình". Chọn "Có" thì ca chuyển sang đường nguy cơ lừa đảo (như #4).
-- **Ai được báo, sau bao lâu:** tư vấn viên thấy ca "Cao · gấp", lời khách trả lời, và đề xuất "có thể nhả sau khi gọi nhanh xác nhận người nhận". Quá 5 phút (số dựng) chưa ai nhận: nhắn khách số tổng đài và gợi ý thanh toán cách khác. Không tự nhả.
+- **Người dùng thấy gì:** nhãn "Mình hiểu bạn đang gấp"; "Mình dựa vào: quầy viện phí, đang gấp, giao dịch đang được giữ"; thẻ "Ca ưu tiên đã chuyển - #TV-0413 - dự kiến phản hồi khoảng 2 phút (số dựng)"; nút "Xác thực khuôn mặt ngay" là nút chính.
+- **Làm gì tiếp:** xác thực ngay - trả lời một câu: "Không, mình tự thanh toán" / "Có, có người đang hướng dẫn mình". Chọn "Có" thì ca chuyển sang đường nguy cơ lừa đảo (như #4).
+- **Ai được báo, sau bao lâu:** tư vấn viên thấy ca "Cao - gấp", lời khách trả lời, và đề xuất "có thể nhả sau khi gọi nhanh xác nhận người nhận". Quá 5 phút (số dựng) chưa ai nhận: nhắn khách số tổng đài và gợi ý thanh toán cách khác. Không tự nhả.
 - **Quyết định**
   - Chọn: **chuyển người nhanh, kèm đường đi trong lúc chờ và một câu hỏi duy nhất**.
   - Loại "AI tự nhả khi khách nói gấp": câu này giống hệt lời người bị lừa (#4).
@@ -105,9 +105,9 @@ Làm cho 2 kịch bản đắt nhất. Câu AI nói dưới đây khớp từng 
 
 ## §4. Mức tự chủ
 
-Ba mức: **tự làm** · **cần người duyệt** · **cấm**. Lý do viết theo cái giá khi sai.
+Ba mức: **tự làm** - **cần người duyệt** - **cấm**. Lý do viết theo cái giá khi sai.
 
-| Tool | Mức | Ai duyệt | Sai thì ai chịu gì · đảo lại được không · chờ người thì mất gì | Phương án đã loại |
+| Tool | Mức | Ai duyệt | Sai thì ai chịu gì - đảo lại được không - chờ người thì mất gì | Phương án đã loại |
 |---|---|---|---|---|
 | `giu_giao_dich` | **Tự làm** | — | Giữ nhầm: khách mất thời gian chờ, giao dịch vẫn nguyên (nhả là đi tiếp). Đảo được. Nếu bắt chờ người duyệt trước khi giữ, tiền có thể đã đi trong vài giây, tệ hơn giữ nhầm. | Cần người duyệt: chờ người còn đắt hơn giữ nhầm (#4, #10). |
 | `yeu_cau_xac_minh` | **Tự làm** | — | Gửi thừa: khách bấm bỏ qua, mất vài giây. Đảo được. Chính khách thấy và tự bấm, nên không có thiệt hại thầm lặng. | Cấm (chỉ tư vấn viên gửi): làm chậm đường nhanh nhất cho người thật gấp (#3, #5). |
@@ -233,8 +233,8 @@ Ba tiêu chí Pass/Fail, một người ngoài nhóm đọc chấm ra cùng kế
 ## §7. Demo
 
 - **Cấu trúc:** lát cắt (30") -> bấm ca #4 rồi #5 -> một mức tự chủ và cái giá (`nha_giao_dich`) -> ca lạ.
-- **Phân công nói:** [Nguyễn Hoàng Cương: lát cắt, kịch bản] · [Vũ Lê Hoàng: khi AI sai, tiêu chí] · [Nguyễn Mạnh Tường: mức tự chủ] · [Nguyễn Thị Dung: bấm prototype, ca lạ].
-- **Ca lạ nhận được ở demo:** [điền sau demo: ca là gì, prototype đã làm gì, nhóm có đổi ý gì sau ca đó không].
+- **Phân công nói:** Nguyễn Hoàng Cương: lát cắt, kịch bản - Vũ Lê Hoàng: khi AI sai, tiêu chí - Nguyễn Mạnh Tường: mức tự chủ - Nguyễn Thị Dung: bấm prototype, ca lạ.
+- **Ca lạ nhận được ở demo:** điền sau demo: ca là gì, prototype đã làm gì, nhóm có đổi ý gì sau ca đó không.
 - **Chuẩn bị sẵn cho ca lạ:** xác định ca lạ thuộc lớp nào (①–④) -> tool nào AI có thể gọi nhầm -> mức tự chủ trong §4 cho tool đó -> AI nói gì. Việc không đảo được luôn đi qua người duyệt.
 
 ---
@@ -243,4 +243,4 @@ Ba tiêu chí Pass/Fail, một người ngoài nhóm đọc chấm ra cùng kế
 - [x] Repo công khai tên `K5-<lớp>-Day05-T5-<tên nhóm>`
 - [x] `spec.md` này, bảng thành viên ở đầu đã điền đúng mã học viên
 - [x] `prototype/index.html` và 1–2 ảnh đánh số ①–⑨
-- [x] Cả nhóm trả lời được: "Hành động này sai thì ai mất gì?" · "Lỗi nguy hiểm nhất là gì?" · "Phần bạn làm là gì?"
+- [x] Cả nhóm trả lời được: "Hành động này sai thì ai mất gì?" - "Lỗi nguy hiểm nhất là gì?" - "Phần bạn làm là gì?"
